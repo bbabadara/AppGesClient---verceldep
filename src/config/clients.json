@@ -1,0 +1,20 @@
+[
+  {
+    "numero": "0123456789",
+    "statut": "actif",
+    "nom": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  {
+    "numero": "0987654321",
+    "statut": "inactif",
+    "nom": "Jane Smith",
+    "email": "jane.smith@example.com"
+  },
+  {
+    "numero": "0112233445",
+    "statut": "actif",
+    "nom": "Albert Einstein",
+    "email": "albert.einstein@example.com"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "numero": "0123456789",
+    "statut": "succès",
+    "message": "Client trouvé"
+  },
+  {
+    "numero": "0987654321",
+    "statut": "erreur",
+    "message": "Client inactif"
+  },
+  {
+    "numero": "0112233445",
+    "statut": "succès",
+    "message": "Client trouvé"
+  }
+]

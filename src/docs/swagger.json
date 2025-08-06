@@ -1,0 +1,107 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Gestion des Clients Orange",
+    "version": "1.0.0",
+    "description": "API pour gérer les clients et leurs demandes"
+  },
+  "paths": {
+    "/clients/{numero}": {
+      "get": {
+        "summary": "Récupérer un client",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "path",
+            "required": true,
+            "description": "Numéro du client",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client trouvé",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Client"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Client inactif ou non trouvé"
+          }
+        }
+      }
+    },
+    "/logs": {
+      "get": {
+        "summary": "Récupérer tous les logs",
+        "description": "Retourne la liste de tous les logs enregistrés, triés du plus récent au plus ancien.",
+        "responses": {
+          "200": {
+            "description": "Liste des logs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Log"
+                  }
+                },
+                "examples": {
+                  "logs": {
+                    "summary": "Exemple de réponse",
+                    "value": [
+                      {
+                        "_id": "664f1c...",
+                        "numero": "0123456789",
+                        "statut": "succès",
+                        "message": "Client trouvé",
+                        "date": "2024-06-01T12:34:56.789Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Client": {
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string"
+          },
+          "statut": {
+            "type": "string"
+          },
+          "nom": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "Log": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "numero": { "type": "string" },
+          "statut": { "type": "string" },
+          "message": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
