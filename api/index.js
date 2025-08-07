@@ -27,4 +27,4 @@ app.use('/api/clients', clientRoutes);
 app.use('/logs', logRoutes);
 
 
-module.exports = serverless(app);   
+module.exports.handler = serverless(app);   
