@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('../src/config/db');
 const clientRoutes = require('../src/routes/clientRoutes');
@@ -27,4 +28,4 @@ app.use('/api/clients', clientRoutes);
 app.use('/logs', logRoutes);
 
 
-module.exports.handler = serverless(app);   
+module.exports = serverless(app);   
