@@ -1,4 +1,5 @@
-const Log = require('../models/logModel');
+const logService = require('../services/logService');
+
 //swagger components
 /**
  * @swagger
@@ -57,8 +58,19 @@ const Log = require('../models/logModel');
  *               $ref: '#/components/schemas/Error'
  */
 const getLogs = async (req, res) => {
-  const logs = await Log.find().sort({ date: -1 });
-  res.json(logs);
+  try {
+    const logs = await logService.getLogs();
+    res.json({
+      success: true,
+      count: logs.length,
+      data: logs
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
 };
 
 module.exports = { getLogs };
